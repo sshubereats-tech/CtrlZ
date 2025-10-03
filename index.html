@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Recovery Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🔍 Data Recovery Tool</h1>
+            <p class="subtitle">Recover deleted files from your drives</p>
+        </header>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="drive-select">Select Drive:</label>
+                <select id="drive-select">
+                    <option value="">Loading drives...</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label>File Types:</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="filter-all" checked>
+                        <span>All Files</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="filter-images">
+                        <span>Images</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="filter-documents">
+                        <span>Documents</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="filter-videos">
+                        <span>Videos</span>
+                    </label>
+                </div>
+            </div>
+
+            <button id="scan-btn" class="btn btn-primary">Start Scan</button>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <div id="status-text" class="status-text">Ready to scan...</div>
+        </div>
+
+        <div class="table-container">
+            <table id="files-table">
+                <thead>
+                    <tr>
+                        <th><input type="checkbox" id="select-all"></th>
+                        <th>File Name</th>
+                        <th>Path</th>
+                        <th>Size</th>
+                        <th>Deleted</th>
+                        <th>Recovery Chance</th>
+                        <th>Condition</th>
+                        <th>Origin</th>
+                        <th>Recovery Result</th>
+                    </tr>
+                </thead>
+                <tbody id="files-tbody">
+                    <tr class="empty-state">
+                        <td colspan="9">No files found. Start a scan to find deleted files.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer-controls">
+            <div class="footer-left">
+                <button id="recover-btn" class="btn btn-success" disabled>Recover Selected</button>
+                <div class="file-count">
+                    <span id="selected-count">0</span> file(s) selected
+                </div>
+            </div>
+            <div class="footer-right">
+                <button id="choose-recovery" class="btn btn-secondary">Choose Recovery Folder</button>
+                <div class="recovery-path">Saving to: <span id="recovery-path">Application folder</span></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="renderer.js"></script>
+</body>
+</html>
